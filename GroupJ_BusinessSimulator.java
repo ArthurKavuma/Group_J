@@ -31,4 +31,15 @@ public class GroupJ_BusinessSimulator {
         System.out.println();
     }
 
-   
+  public static void printReceipt(String[] items, int[] quantities, double[] subtotals,
+                                 boolean[] discountApplied, double grandTotal) {
+    System.out.println("========== RECEIPT ==========");
+    for (int i = 0; i < items.length; i++) {
+        String note = discountApplied[i] ? "(discount applied)" : "(no discount)";
+        System.out.printf("%-15s qty: %-3d  UGX %,10.2f  %s%n",
+                items[i], quantities[i], subtotals[i], note);
+    }
+    System.out.println("------------------------------");
+    System.out.printf("GRAND TOTAL: UGX %,.2f%n", grandTotal);
+    System.out.println("==============================");
+}
