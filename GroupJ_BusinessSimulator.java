@@ -80,3 +80,4 @@ public class GroupJ_BusinessSimulator {
         System.out.printf("GRAND TOTAL: UGX %,.2f%n", grandTotal);
         System.out.println("==============================");
     }
+}
