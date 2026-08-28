@@ -1,0 +1,34 @@
+public class GroupJ_BusinessSimulator {
+    public static void main(String[] args) {
+        String[] items = {"Bread", "Cake(slice)", "Doughnut", "Cookie"};
+        double[] prices = {3500.00, 25000.00, 1000.00, 500.00};
+        int[] quantities = {2, 2, 5, 10};
+
+        printPriceList(items, prices);
+
+        double[] subtotals = new double[items.length];
+        boolean[] discountApplied = new boolean[items.length];
+
+        for (int i = 0; i < items.length; i++) {
+            subtotals[i] = calculateSubtotal(items[i], prices[i], quantities[i]);
+            discountApplied[i] = isDiscounted(items[i], quantities[i]);
+        }
+
+        double grandTotal = 0;
+        for (double s : subtotals) {
+            grandTotal += s;
+        }
+
+        printReceipt(items, quantities, subtotals, discountApplied, grandTotal);
+    }
+
+    public static void printPriceList(String[] items, double[] prices) {
+        System.out.println("===== SweetHome Bakery — Price List =====");
+        for (int i = 0; i < items.length; i++) {
+            System.out.printf("%-15s UGX %,10.2f%n", items[i], prices[i]);
+        }
+        System.out.println("==========================================");
+        System.out.println();
+    }
+
+   
