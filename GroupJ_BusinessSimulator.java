@@ -31,6 +31,32 @@ public class GroupJ_BusinessSimulator {
         System.out.println();
     }
 
+public static double calculateSubtotal(String item, double price, int quantity) {
+    double subtotal = price * quantity;
+
+    switch (item) {
+        case "Bread":
+            if (quantity >= 3) {
+                subtotal *= 0.95; // 5% off
+            }
+        
+        case "Cake(slice)":
+            // never discounted
+        
+        case "Doughnut":
+            if (quantity >= 6) {
+                subtotal -= 500.00; // flat UGX 500 off
+            }
+    
+        case "Cookie":
+            if (quantity >= 10) {
+                subtotal *= 0.90; // 10% off
+            }
+    
+    }
+    return subtotal;
+}
+
   public static void printReceipt(String[] items, int[] quantities, double[] subtotals,
                                  boolean[] discountApplied, double grandTotal) {
     System.out.println("========== RECEIPT ==========");
