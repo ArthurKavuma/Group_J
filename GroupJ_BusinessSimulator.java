@@ -57,6 +57,18 @@ public static double calculateSubtotal(String item, double price, int quantity) 
     return subtotal;
 }
 
+ public static boolean isDiscounted(String item, int quantity) {
+        switch (item) {
+            case "Bread":
+                return quantity >= 3;
+            case "Doughnut":
+                return quantity >= 6;
+            case "Cookie":
+                return quantity >= 10;
+            default:
+                return false;
+        }
+    }
   public static void printReceipt(String[] items, int[] quantities, double[] subtotals,
                                  boolean[] discountApplied, double grandTotal) {
     System.out.println("========== RECEIPT ==========");
