@@ -5,6 +5,7 @@ public class GroupJ_BusinessSimulator {
         int[] quantities = {2, 2, 5, 10};
 
         printPriceList(items, prices);
+
         double[] subtotals = new double[items.length];
         boolean[] discountApplied = new boolean[items.length];
 
@@ -22,9 +23,9 @@ public class GroupJ_BusinessSimulator {
     }
 
     public static void printPriceList(String[] items, double[] prices) {
-        System.out.println("===== SweetHome Bakery — Price List =====");
+        System.out.println("===== SweetHome Bakery - Price List =====");
         for (int i = 0; i < items.length; i++) {
-            System.out.printf("%-15s UGX %,10.2f%n", items[i], prices[i]);
+            System.out.println(items[i] + " - UGX " + prices[i]);
         }
         System.out.println("==========================================");
         System.out.println();
@@ -32,7 +33,7 @@ public class GroupJ_BusinessSimulator {
 
     public static double calculateSubtotal(String item, double price, int quantity) {
         double subtotal = price * quantity;
-    
+
         switch (item) {
             case "Bread":
                 if (quantity >= 3) {
@@ -54,30 +55,30 @@ public class GroupJ_BusinessSimulator {
                 break;
         }
         return subtotal;
-     }
+    }
 
     public static boolean isDiscounted(String item, int quantity) {
         switch (item) {
-             case "Bread":
+            case "Bread":
                 return quantity >= 3;
             case "Doughnut":
-                 return quantity >= 6;
+                return quantity >= 6;
             case "Cookie":
                 return quantity >= 10;
             default:
-                 return false;
-            }
-     }
+                return false;
+        }
+    }
+
     public static void printReceipt(String[] items, int[] quantities, double[] subtotals,
-                                    boolean[] discountApplied, double grandTotal) {
+                                     boolean[] discountApplied, double grandTotal) {
         System.out.println("========== RECEIPT ==========");
         for (int i = 0; i < items.length; i++) {
             String note = discountApplied[i] ? "(discount applied)" : "(no discount)";
-            System.out.printf("%-15s qty: %-3d  UGX %,10.2f  %s%n",
-                    items[i], quantities[i], subtotals[i], note);
+            System.out.println(items[i] + " - qty: " + quantities[i] + " - UGX " + subtotals[i] + " " + note);
         }
         System.out.println("------------------------------");
-        System.out.printf("GRAND TOTAL: UGX %,.2f%n", grandTotal);
+        System.out.println("GRAND TOTAL: UGX " + grandTotal);
         System.out.println("==============================");
     }
 }
